@@ -5,6 +5,7 @@ function calculateTax(income, expenses) {
   
          
   if( (income >= 0 && expenses >= 0)|| expenses > income){
+    
     return "Invalid Input";
   }
 
@@ -13,6 +14,5 @@ function calculateTax(income, expenses) {
 }
 
 
-let m =  calculateTax(5000,2000);
-console.log(m);
+
 
