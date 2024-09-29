@@ -1,18 +1,14 @@
-
 function calculateTax(income, expenses) {
-  let s = income - expenses;
-  let taxMoney = s * 0.20;
-  
-         
-  if( (income >= 0 && expenses >= 0)|| expenses > income){
-    
+  if (
+    income <= 0 ||
+    expenses <= 0 ||
+    income < expenses ||
+    typeof income !== "number" ||
+    typeof expenses !== "number"
+  ) {
     return "Invalid Input";
   }
-
-  return taxMoney;
-  
+  const savedCost = income - expenses;
+  const tax = savedCost * 0.2;
+  return tax;
 }
-
-
-
-

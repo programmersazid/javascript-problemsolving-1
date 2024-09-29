@@ -1,19 +1,9 @@
-
 function sendNotification(email) {
-  let Email = email.split('@');
-  if(Email.length === 2)
-  {
-    let userName = Email[0];
-    let domainName = Email[1];
-
-    return '${userName}sent you an email from ${domainName}';
-  }
-  else if(email.indexOf('@') === -1){
+  if (email.indexOf("@") < 0 || typeof email !== "string") {
     return "Invalid Email";
   }
-
-
+  const username = email.split("@")[0];
+  const domainName = email.split("@")[1];
+  const message = username + " " + "sent you an email from" + " " + domainName;
+  return message;
 }
-
- 
-

@@ -1,50 +1,42 @@
-
 function calculateTax(income, expenses) {
-    let s = income - expenses;
-    let taxMoney = s * 0.20;
-    
-           
-    if( (income >= 0 && expenses >= 0)|| expenses > income){
-      
-      return "Invalid Input";
-    }
-  
-    return taxMoney;
-    
+  if (
+    income <= 0 ||
+    expenses <= 0 ||
+    income < expenses ||
+    typeof income !== "number" ||
+    typeof expenses !== "number"
+  ) {
+    return "Invalid Input";
   }
-  
-  
+  const savedCost = income - expenses;
+  const tax = savedCost * 0.2;
+  return tax;
+}
+
+
 function sendNotification(email) {
-    let Email = email.split('@');
-    if(Email.length === 2)
-    {
-      let userName = Email[0];
-      let domainName = Email[1];
-  
-      return '${userName}sent you an email from ${domainName}';
-    }
-    else if(email.indexOf('@') === -1){
-      return "Invalid Email";
-    }
-  
-  
+  if (email.indexOf("@") < 0 || typeof email !== "string") {
+    return "Invalid Email";
   }
-  
-   
-  function checkDigitsInName(name) {
-    if( typeof name !== "string"){
-        return "Invalid Input";
+  const username = email.split("@")[0];
+  const domainName = email.split("@")[1];
+  const message = username + " " + "sent you an email from" + " " + domainName;
+  return message;
+}
+
+function checkDigitsInName(name) {
+  if (typeof name !== "string" || name === undefined) {
+    return "Invalid Input";
+  }
+  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (const num of numbers) {
+    for (const nameVal of name) {
+      if (num == nameVal) {
+        return true;
+      }
     }
-    else{
-        for (i= 1; i < name.length; i++){
-            if( isNaN(name[i])){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-    }
+  }
+  return false;
 }
 
 function calculateFinalScore(obj)  {

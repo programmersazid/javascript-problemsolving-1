@@ -1,16 +1,14 @@
 function checkDigitsInName(name) {
-    if( typeof name !== "string"){
-        return "Invalid Input";
+    if (typeof name !== "string" || name === undefined) {
+      return "Invalid Input";
     }
-    else{
-        for (i= 1; i < name.length; i++){
-            if( isNaN(name[i])){
-                return true;
-            }
-            else{
-                return false;
-            }
+    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (const num of numbers) {
+      for (const nameVal of name) {
+        if (num == nameVal) {
+          return true;
         }
+      }
     }
-}
-
+    return false;
+  }
